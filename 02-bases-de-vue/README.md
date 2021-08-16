@@ -46,10 +46,12 @@ Expresiones como
 en el html, dentro del div que maneja Vue ('#myApp'), tambien funcionan los {{}}
 
 
-~~~<div id="myApp">
+~~~
+<div id="myApp">
     <h1>Hol Mundo</h1>
     <p> {{ 'Philip'+ ' Chester' }} </p>
-</div>~~~
+</div>
+~~~
 
 
 #### 16-08-21 --- v32 Estado del Componente - Data
