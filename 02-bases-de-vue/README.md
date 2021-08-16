@@ -48,7 +48,7 @@ en el html, dentro del div que maneja Vue ('#myApp'), tambien funcionan los {{}}
 
 ~~~
 <div id="myApp">
-    <h1>Hol Mundo</h1>
+    <h1>Hola Mundo</h1>
     <p> {{ 'Philip'+ ' Chester' }} </p>
 </div>
 ~~~
@@ -72,6 +72,21 @@ const app = Vue.createApp({
     setup() {}
 })
 ~~~
+#### 16-08-21 --- v33 Introduccion a los eventos
+
+El objeto literal que devuelve data (el return)
+
+~~~
+data() {
+        return {
+            message:'Hola Mundo !!!',
+            quote:` I'm Batman`
+        }
+    }
+~~~
+Es un objeto reactivo, es decir, al modificarse el html se actaulizará, renderizando únicamente la parte que cambió
+
+
 
 
 
