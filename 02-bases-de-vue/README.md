@@ -39,19 +39,21 @@ Hola mundo
 *{{ }}* se utiliza para incorporar expresiones de Javascript en los backticks``
 
 Expresiones como 
-~~~{{ (true)?'Activo':'Inactivo' }}
+`
+{{ (true)?'Activo':'Inactivo' }}
 {{ 1+1 }}
-{{getAlgo()}}~~~
+{{getAlgo()}}
+`
 
 en el html, dentro del div que maneja Vue ('#myApp'), tambien funcionan los {{}}
 
 
-~~~
+`
 <div id="myApp">
     <h1>Hola Mundo</h1>
     <p> {{ 'Philip'+ ' Chester' }} </p>
 </div>
-~~~
+`
 
 
 #### 16-08-21 --- v32 Estado del Componente - Data
@@ -62,7 +64,7 @@ Options API dentro de elementos del Vue.createApp
 
 Composition API que se hace principalmente dentro del setup
 
-~~~
+`
 const app = Vue.createApp({
     /* template:`
     <h1>Hola Mundo</h1>
@@ -71,19 +73,19 @@ const app = Vue.createApp({
     watch:{},
     setup() {}
 })
-~~~
+`
 #### 16-08-21 --- v33 Introduccion a los eventos
 
 El objeto literal que devuelve data (el return)
 
-~~~
+`
 data() {
         return {
             message:'Hola Mundo !!!',
             quote:` I'm Batman`
         }
     }
-~~~
+`
 Es un objeto reactivo, es decir, al modificarse el html se actaulizará, renderizando únicamente la parte que cambió
 
 
