@@ -1,7 +1,8 @@
 <template>
 <div>
     <img alt="Vue logo" src="./assets/logo.png">
-    <Counter />
+    <Counter titulo-de-la-seccion="Entraron" />
+    <Counter  />
 </div>
 </template>
 

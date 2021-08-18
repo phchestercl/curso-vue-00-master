@@ -187,3 +187,209 @@ Script
 y los estilos (saas)
 
 con las extenciones que tenmos lo podemos crear facilmente tecleando vue y selecionamos la opcion de crear componente.
+
+### Estado de un componente
+
+~~~
+export default {
+    name:'Counter',
+    data(){
+        return{
+            counter:5
+        }
+    }
+}
+~~~
+incorporaremos la parte de la data, la cual es un objeto reactivo, lo que significa que Vue va a estar pendiente de cualquier cambio que se produzca en ella.
+
+y lo incorporamos al template
+~~~
+<p> {{counter}} </p>
+~~~
+
+Los componentes no deberia hacer operaciones mas complejas, solo se debe utilizar para representar información.
+
+### Propiedades Computadas
+Supomgamos el siguiente código en el la seccion del template de nuestro componente Counter
+
+~~~
+<template>
+  <div>
+    <h2>Counter!!</h2>
+    <p>{{ counter }} <sup>2</sup> {{ Math.pow(counter, 2) }}</p>
+    <p>{{ counter }} <sup>2</sup> {{ Math.pow(counter, 3) }}</p>
+    <p>{{ counter }} <sup>2</sup> {{ Math.pow(counter, 4) }}</p>
+    <p>{{ counter }} <sup>2</sup> {{ Math.pow(counter, 5) }}</p>
+    <p>{{ counter }} <sup>2</sup> {{ Math.pow(counter, 6) }}</p>
+  </div>
+</template>
+~~~
+Cada vez que la linea se ejecta, se vuelve a realizar la misma operación. Pero imaginemos que sea el resultado de una llamada a una api o algo mas pesado que este simple calculo.
+
+Incorporamos un método
+~~~
+export default {
+  name: "Counter",
+  data() {
+    return {
+      counter: 5,
+    };
+  },
+  methods:{
+      getSquareValue(){
+          return 'Hola '
+      }
+  }
+};
+~~~
+
+y luego lo llamamos desde la sección de template.
+
+Esto puede servir, pero se volvera a ejecutar cada cada vez que sea llamado, osea linea por linea.
+
+Pero esto no es lo recomendado, por que nuevamente esto podría ser un calculo exhaustivo.
+
+Seria conveniente mantener en cache el resultado de esta función hasta que el valor de algun argumento cambie.
+
+[Enlace a Documentación de propiedades computadas](https://v3.vuejs.org/guide/computed.html#computed-properties)
+
+Una mejor forma sería utilizar un valor computado, que funciona al mismo nivel que data y methods. Dònde podré crear propiedades computadas, las cuales tienen la ventaja sobre lo metodos que éstas se guardan en el cache lo que ayuda a que sea más eficiente el proceso.
+
+~~~
+computed:{
+      squareCounter(){
+          console.log('computed squareCounter')
+          return this.counter*this.counter
+      }
+  }
+~~~
+![image info](./Z01-Material-de-apoyo/img/13.png)
+
+como observamos solo hay una llamada en de la propiedad computada y 4 del método.
+
+Si actualizamos el template y ponemos la propiedad computada, en todas las líneas dónde teníamos el método
+~~~
+<p>{{ counter }} <sup>2</sup> {{ squareCounter }}</p>
+~~~
+![image info](./Z01-Material-de-apoyo/img/14.png)
+
+Así tenemos que el calculo se realiza una sola vez.
+
+Es importante señalar que Vue estará "pendiente" de los cambios en la variables **counter** y si se produce un cambio en ella, la propiedad computada se volvera a calcular.
+
+
+### Incrementar y Decremento
+---
+
+En esta seccion se debe poner dos botones uno para incrementar el valor de counter y otro para reducir su valor ambos en 1.
+
+La solucion es
+~~~
+<template>
+  <div>
+    <h2>Counter!!</h2>
+    <p>{{ counter }} <sup>2</sup> {{ counter * counter }}</p>
+    <div>
+        <button v-on:click="sumaUno">+1</button>
+        <button @click="restaUno">-1</button>
+        </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Counter",
+  data() {
+    return {
+      counter: 5,
+    };
+  },
+  methods: {
+    getSquareValue() {
+      console.log("getSquareValue");
+      return this.counter * this.counter;
+    },
+    sumaUno(){
+        return this.counter+=1
+    },
+    restaUno(){
+        this.counter-=1
+    }
+  },
+  computed: {
+    squareCounter() {
+      console.log("computed squareCounter");
+      return this.counter * this.counter;
+    },
+    
+  },
+};
+</script>
+
+<style>
+button {
+  background-color: #64b687;
+  border-radius: 4px;
+  border: 1px solid whitesmoke;
+  cursor: pointer;
+  margin: 5px;
+  padding: 4px;
+  transition: 0.3s ease-in-out;
+  width:60px
+}
+button:hover{
+    background-color: #224933;
+    transition: 0.3s ease-in-out;
+    color: whitesmoke;
+
+}
+</style>
+~~~
+
+
+### Propertis Props
+---
+
+Vamos a al archivo App.vue y dupliquemos el componente counter.
+
+~~~
+<div>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <Counter />
+    <Counter />
+</div>
+~~~
+
+Como resultado ambos componetes estaran en la página web y cada uno funcionará en forma independiente.
+
+Sin embargo, es necesario poder diferenciarlos en el front en.
+Para ello es necesario la incorporación de atributos o propiedades en estos compenetes.
+
+En la llamada al componente, le podemos pasar atributos de la siguiente forma:
+~~~
+<Counter titulo-de-la-seccion="Entraron" />
+~~~
+ y asu a vez incorporar el atributo props ya dentro del componente y sobre la data
+ ~~~
+ export default {
+  name: "Counter",
+  props:{
+      
+  },
+  data() {
+  etc ....
+~~~
+Las *props* se pueden definir de varias maneras:
+
+1 Como un array
+
+~~~
+  props:['titulo-de-la-seccion']
+~~~
+y la incoporamos en la seccion que nos interesa del componente
+~~~
+  <h2> { { tituloDeLaSeccion } } </h2>
+~~~
+
+### Diferentes formas de definir las props
+
