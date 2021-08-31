@@ -456,3 +456,82 @@ export default {
 </script>
 
 ~~~
+
+### Seccion 6 Pruebas Unitarias
+Sección de pruebas unitarias, el objetivo es probar todo el trabajo realizado
+- Jest
+- Expect
+- Spies (SpyOn)
+- Ciclo de Vida de las pruebas
+- wrapper
+- ShallowMount
+- Mount
+- Expect
+- Snapshot
+- Props
+- Mocks
+
+### Pruebas unitarias de integracion
+las pruebas no son una pérdida de tiempo ya que nos permiten contar con un código de calidad.
+
+Pruebas unitarias estan enfocadas en pequeñas funcionalidades de la aplicación, son pruebas "atomicas", en funciones especificas como un elemento independiente.
+
+
+Las pruebas de integración enfocadas en como reaccionan varias piezas en conjunto
+(toman un conjunto de componentes y su funcionamiento)
+
+Caracterisiticas de las pruebas:
+1. Fáciles de escribir
+2. Fáciles de leer
+3. Confiables
+4. Rápidas
+5. Principalmente Unitarias
+
+Se debe ir de los especifico a lo general
+Los tres puntos para realizar cualquier prueba son AAA:
+- Arrange (Arrglar)
+- Act (Actuar
+- Assert (Afirmar)
+
+El Arrenge es cuando se prepara el sujeto de prueba (la funcion) aqui, Inicializamos las variables, realizamos las importaciones, es decer, se prepara el ambiente para hacer la pruebas.
+
+Act, aquí es dónde realizamos acciones sobre el sujeto, por ejemplo, llamar métodos, simular clicks, realizar acciones sobre el paso anterior, en general simular lo que queremos probar.
+
+En el terecer paso, Assert, lo que hacemos es observar el comportamiento resultante, verificar si los resultados son los esperados, por ejemplo que algo cambie, que algo se incremente o bien que no suceda nada.
+
+Mitos
+- hace que la aplicacion no tenga errores (Puede exister errores)
+- Las pruebas no pueden fallar (pueden fallar)
+- Hecen mas lenta la aplicación (no es asi, las pruebas se ejecutan en el entorno de desarrollo)
+- Es una pérdida de tiempo, puede llegar a ser cierto ya que realizar las pruebas pueden llegar a demorar el mismo tiempo que en desarrollarla.
+- Hay que probar todo ( si hasta dónde se pueda si, se prueba las ruta critica)
+
+NO OLVIDAR QUE LAS PRUEBAS SON PARA ASEGURARSE QUE LA APLICACIÓN FUNCIONE COMO SE ESPERA
+
+### Primera Prueba en VUE
+
+En la carpeta test/unit, se creará la misma estructura de directorios que se tiene en src.
+
+Asi por ejemplo si quisieramos probar Counter.vue, que se encunetra en el directorio "components", en el directorio test/unit, deberiamos crear el directorio "components". Se tiene que contar con la misma estructura de directorios, lo que hará más facil encontrar la prueba asociada a cada componente o funcionalidad que se desea probar.
+
+Las pruebas se defienen en test suites, los cuales comeinzan con el **describe**, luego se le incorporan todo los test que queramos realizar
+~~~
+describe( 'Example Component',()=>{
+  test('Debe de ser mayor a 10',()=>{
+    // Arreglar
+    let value = 5;
+    // Estimulo Act
+    value = value +2
+    // Observar el resultahdo
+    if(value>10){
+      //TODO todo bien
+    } else {
+      throw `${ value } no es mayor a 10`
+    }
+  } )
+})
+~~~
+
+### Expect
+jest [Documentacion Jest](https://jestjs.io)
+
