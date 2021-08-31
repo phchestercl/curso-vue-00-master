@@ -2,6 +2,7 @@
   <div>
     <h2>{{ customTitle }}</h2>
     <p>{{ counter }} <sup>2</sup> {{ counter * counter }}</p>
+    <p data-test-id="counter"> {{ counter}} </p>
     <div class="buttons-container">
         <button v-on:click="sumaUno">+1</button>
         <button @click="restaUno">-1</button>

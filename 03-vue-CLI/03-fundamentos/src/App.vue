@@ -3,6 +3,7 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <Counter titulo-de-la-seccion="Entraron" :start="5"/>
     <Counter  :start="6"/ -->
+    <!-- <Counter titulo-de-la-seccion="Contador"/> -->
     <Indecision />
 </div>
 </template>
@@ -10,6 +11,7 @@
 <script>
 
 import Indecision from './components/Indecision.vue'
+/* import Counter from '@/components/Counter.vue' */
 import './css/styles.css'
 
 

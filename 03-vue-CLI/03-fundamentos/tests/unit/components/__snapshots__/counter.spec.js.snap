@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Counter Component Debe ser identico al Snapshot 1`] = `
-<div>
-  <h2>Counter</h2>
-  <p>100 <sup>2</sup> 10000</p>
-  <div class="buttons-container"><button>+1</button><button>-1</button></div>
-</div>
-`;

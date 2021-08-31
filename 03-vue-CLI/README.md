@@ -538,8 +538,82 @@ con jest no son necesarias las aserciones con el if else y trhow tal como lo pus
 
 Expect nos permite realizar una serie de evaluaciones y manejar los resultados
 
+los test suits se estructuran de la siguientye manera
+~~~
+describe('Nombre del componente',()=>{
+  test('Descripción de prueba a realizar',()=>{
+    Cuerpo de la preuba
+    excpect()=> que nos permititá evaluar el resultado esperado
+
+  })
+})
+~~~
+La prueba de snapchot, nos permite comprar el codigo con un "foto" almacenada
+
+~~~
+import { shallowMount, mount } from '@vue/test-utils'
+import Counter from '@/components/Counter'
+
+describe('Counter Component', ()=>{
+    // Esta prueba nos permite saber si el código se encuentra tal como lo dejamos
+    test('Debe ser identico al Snapshot',()=>{
+        const wrapper = shallowMount( Counter)
+        
+        expect( wrapper.html() ).toMatchSnapshot()
+
+    })
+})
+~~~
+
 
 Para actualización de snapshot
 ~~~
 npm run test:unit -- -u
 ~~~
+
+### Verificar valor de una etiqueta HTML
+~~~
+test('H2 pero verificando que exista',()=>{
+        const wrapper =shallowMount(Counter)
+        expect(wrapper.find('h2').exists()).toBeTruthy()
+        const h2Value=wrapper.find('h2').text()
+        expect(h2Value).toBe('Counter')
+    })
+~~~
+prueba de un atributo html
+~~~
+test('El valor por defecto debe ser 100 en el parrafo',()=>{
+        const wrapper = shallowMount(Counter)
+        const parrafos = wrapper.find('[data-test-id="counter"]')
+        
+        expect(parrafos.text()).toBe('100')
+    })
+~~~
+
+### Simular Eventos
+
+Evaluaremos que sucede si se hace click en un boton
+~~~
+test('Incremento en 1 al presionar el boton',async()=>{
+        const wrapper = shallowMount(Counter)
+        const value = wrapper.find('[data-test-id="counter"]').text()
+        console.log('Valor original de value >>>>: '+value)
+        const btnInc = wrapper.find('button')
+        await btnInc.trigger('click')     //=> dispara el evento click y el await es para esperar la re-rendirzasción del DOM virtual
+        const value2 = wrapper.find('[data-test-id="counter"]').text()
+        console.log('Nuevo Valor de value >>>>: '+value2)
+        expect(value2).toBe((parseInt(value)+1).toString())
+    })
+~~~
+
+### Leer los props en las pruebas
+~~~
+test('Debe establecer el valor por defecto',()=>{
+  const {start} = wrapper.props()
+  let value = wrapper.find('data-test-id="counter"]').text()
+  expect(Number(value)).toBe(start)
+})
+~~~
+
+### Enviar Props y Evaluarlas
+
