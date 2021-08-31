@@ -534,4 +534,12 @@ describe( 'Example Component',()=>{
 
 ### Expect
 jest [Documentacion Jest](https://jestjs.io)
+con jest no son necesarias las aserciones con el if else y trhow tal como lo pusimos.
 
+Expect nos permite realizar una serie de evaluaciones y manejar los resultados
+
+
+Para actualización de snapshot
+~~~
+npm run test:unit -- -u
+~~~

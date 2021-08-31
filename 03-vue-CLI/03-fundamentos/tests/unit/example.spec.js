@@ -14,7 +14,7 @@ describe('HelloWorld.vue', () => {
 describe( 'Example Component',()=>{
   test('Debe de ser mayor a 10',()=>{
     // Arreglar
-    let value = 5;
+    let value = 9;
     // Estimulo Act
     value = value +2
     // Observar el resultahdo
