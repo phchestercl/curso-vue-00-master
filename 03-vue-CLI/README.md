@@ -369,7 +369,7 @@ En la llamada al componente, le podemos pasar atributos de la siguiente forma:
 ~~~
 <Counter titulo-de-la-seccion="Entraron" />
 ~~~
- y asu a vez incorporar el atributo props ya dentro del componente y sobre la data
+ y a su a vez incorporar el atributo props ya dentro del componente y sobre la data
  ~~~
  export default {
   name: "Counter",
@@ -392,4 +392,67 @@ y la incoporamos en la seccion que nos interesa del componente
 ~~~
 
 ### Diferentes formas de definir las props
+Las properties (props) estan previamente definidas en las propiedad del objeto
+~~~
+props:{
+    tituloDeLaSeccion:String,
+    start:{
+      type:Number,
+      default: 100,
+      required: true,
+      
+    }
+  },
+~~~
 
+
+### Validacion de las Props
+Vamos a asumir que nuestro valor de la propiedad start tiene que ser mayor que 100
+
+El validador recibe como paramtro el valor que vamos a validar y retornará un valor true si pasó la validación o un false si no la pasó
+~~~
+validator(value){
+        return value>=100
+      }
+~~~
+la docuemntacion de las propiedades es
+[Enalce a la Docuemntacion de las Properties](https://v3.vuejs.org/guide/component-props.html#prop-validation)
+
+
+### Watch Observar cambios en una propiedad reactiva
+
+capturar el valor de la caja de texto.
+Creamos un valor reactivo el "question", el cual lo enlazamos por medio de v-model al input box que recibirá lo que escribe el usuario.
+Adicionalmente incorporamos un watch, que nos permite estar observando los cambios sobre el valor de la variable.
+
+~~~
+  <div class="indecision-container">
+      <input @type="text" name="" id="" placeholder="Hazme una pregunta"
+        v-model="question"
+        
+      >
+      <p> Recuerda terminar con un signo de interrogación (?)</p>
+      <div>
+          <h2>{{ question }}</h2>
+          <h1>Si, No , Dejame ver</h1>
+      </div>
+
+    </div>
+</div>
+</template>
+
+<script>
+export default {
+    data(){
+        return {question:null}
+    },
+    watch:{
+        question(value, oldValue){
+            if (!value.includes('?')) return
+        }
+    }
+
+}
+</script>
+
+~~~
