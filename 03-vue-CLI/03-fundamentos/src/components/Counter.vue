@@ -12,10 +12,21 @@
 <script>
 export default {
   name: "Counter",
-  props:['tituloDeLaSeccion'],
+  /* props:['titulo-de-la-seccion','start'], */
+  props:{
+    tituloDeLaSeccion:String,
+    start:{
+      type:Number,
+      default: 100,
+      /* required: true, */
+      validator(value){
+        return value>=0
+      }
+    }
+  },
   data() {
     return {
-      counter: 5,
+      counter: this.start,
     };
   },
   methods: {
