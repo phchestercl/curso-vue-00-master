@@ -617,3 +617,79 @@ test('Debe establecer el valor por defecto',()=>{
 
 ### Enviar Props y Evaluarlas
 
+Las propos se envian al momento de montar el componente para las pruebas
+
+~~~
+const wrapper=shallowMount(Counter,{
+            props:{
+                tituloDeLaSeccion:nomTituloPrueba,
+                start:5
+            }
+        })
+~~~
+
+### Pruebas iniciales Indisecion Component
+~~~
+import { shallowMount, mount } from '@vue/test-utils'
+ import Indesicion from '@/components/Indecision'
+ describe('Test Indesicion',()=>{
+     let wrapper;
+     beforeEach(()=>{
+         wrapper=shallowMount(Indesicion)
+     })
+     test('Prueba de snapshot del componente',()=>{
+         expect(wrapper.html()).toMatchSnapshot()
+     })
+ })
+ ~~~
+### pruebas a realizar
+~~~
+test('Describir en el Input no debe disparar nada (console.log)',()=>{
+
+})
+test('Al escribir el ? disparar fetch',()=>{
+
+})
+test('Pruebas en getAnswer',()=>{
+
+})
+test('Pruebas en getAnswer -Fallo en Api',()=>{
+
+})
+~~~
+
+### Spy y Mocks
+
+Una consideracion es hacer llamados a la API algunas tienen costos y habrá que utilizar mocks
+
+~~~
+ consoleLogSpy=jest.spyOn( console ,'log')
+~~~
+El spy nos permite ver si una instruccion es llamada, en este caso vemos si console.log es llamado en la funcion
+~~~
+test('Describir en el Input no debe disparar nada (console.log)',async()=>{
+        const input=wrapper.find('input')
+        await input.setValue('Hola Mundo')
+        /* expect(consoleLogSpy).toHaveBeenCalled() */
+        expect(consoleLogSpy).toHaveBeenCalledTimes(2)
+     })
+~~~
+
+### Spy con la instancia de Vue
+aun no hemos comprbado que el getAnswer no ha siso disparado
+creamos:
+~~~
+const getAnswerSpy= jest.spyOn(wrapper.vm,'getAnswer')
+~~~
+y verificamos que no haya sido llamado
+~~~
+expect(getAnswerSpy).toHaveBeenCalledTimes(0)
+~~~
+para detalles del wrapper revisar [este enlace](https://vue-test-utils.vuejs.org/api/wrapper/#emitted)
+
+### probar que el getAnswer fue llamado
+
+### pruebas sobre fetch api
+
+
+### simular un fallo en el API
