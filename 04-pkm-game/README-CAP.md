@@ -37,3 +37,17 @@ dentro de src/ crearemos la carpeta pages, y dentro de ella crearemos el compone
 
 Luego en el editor de texto utilizamo vue-> para crear la estructura dle componente.
 
+### emit emitir
+$emit permite emitir datos del componente hijo al componente padre
+
+$emit(nombreDelEvento)
+
+### Paso a Productivo
+
+El script "build" genera la version de producción sacanbdo todo lo que no es necesario para ella
+
+desde la termina:
+~~~
+npm run build
+~~~
+![build ejecutado](./z-material-didactico/02.png)
