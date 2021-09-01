@@ -1,10 +1,11 @@
 import pokemonApi from "../api/pokemonapi"
 
 // Creamos el Arreglo
-const getPokemons = ()=>{
+export const getPokemons = ()=>{
     const pokeArr =Array.from(Array(650))
+
     /* console.log(pokeArr) */
-    return pokeArr.map(( v ,index)=>index+1)
+    return  pokeArr.map(( v ,index)=>index+1)
 }
 // Mezclamos y Arreglo y Llamamos a la funcion que obtiene los nombre de los pokemos
 const getPokemonsOptions = async()=>{
@@ -19,7 +20,7 @@ const getPokemonsOptions = async()=>{
 
 }
 
-const getPokemonNames= async( [a,b,c,d])=>{
+export const getPokemonNames= async( [a,b,c,d])=>{
     /* const res= await pokemonApi.get(`/1`)
     console.log(res.data.name) */
     /* console.log(a,b,c,d) */

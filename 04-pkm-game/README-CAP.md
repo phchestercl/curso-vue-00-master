@@ -52,4 +52,23 @@ npm run build
 ~~~
 ![build ejecutado](./z-material-didactico/02.png)
 
-se crea la parpeta dist, donde se ponen los archivos necesarios para correr en productivo
+se crea la parpeta dist, donde se ponen los archivos necesarios para correr en productivo.
+
+# Seccion 8
+Temas de la seccion
+1. Pruebas con axios
+2. Pruebas de Data aleatoria
+3. PRuebas con emisiones
+4. Multiples emisores al mismo tiempo
+5. stubs
+6. Revisión de cambio en propiedades reactivas
+
+## Pruebas con axios
+axios.spec.js
+
+## Pruebas en helpers
+Para iniciar las pruebas es siempre recomendable comenzar con los elementos mas sencillos y de a poco a lo mas complejo
+revisar archivo **getpokemonoptions.spec.js**
+
+## Pruebas de Pokemon Picture
+
