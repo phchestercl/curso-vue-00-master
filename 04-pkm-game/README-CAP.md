@@ -51,3 +51,5 @@ desde la termina:
 npm run build
 ~~~
 ![build ejecutado](./z-material-didactico/02.png)
+
+se crea la parpeta dist, donde se ponen los archivos necesarios para correr en productivo
