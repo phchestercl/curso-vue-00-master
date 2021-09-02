@@ -75,5 +75,16 @@ Incorporamos en la rutas lo que sucede si no hay cohincidencia de la página rut
 ~~~
 :parhMatch(.*)* se utiliza si ningún de path a sido encontrado
 
-## LazyLoad
+## LazyLoad de Páginas
 
+EL objetivo es que bundle de la aplicación se más pequeño y se importen en la medida que se necesiten
+
+La carga perezosa lo que hace es llamar las rutas en la medida que se requiere, para implementarle se tienen que modificar las definiciones de las rutas incorporando una función flecha que llame su importación
+
+~~~
+component: ()=>import(/* webpackChunkName: "ListPage" */'../modules/pokemon/pages/ListPage')
+~~~
+
+La seccion comentada es para que webpack ponga el nombre del "mudulo" a cargar para poder analizarlo en las devtools de chrome
+
+## Navegar entre páginas RouterLink
