@@ -77,3 +77,5 @@ revisar archivo **getpokemonoptions.spec.js**
 ## Pruebas con emisiones
 
 ## pruebas de PokePage
+
+## Pruebas de propiedades reactivas

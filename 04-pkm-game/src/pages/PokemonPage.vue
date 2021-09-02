@@ -46,8 +46,8 @@ export default {
       this.pokemon = this.pokemonArr[rndInt];
     },
     checkAnswer(id) {
-      console.log("Pokemon Page llamado " + id);
-      console.log(this.pokemon.id);
+      //console.log("Pokemon Page llamado " + id);
+      //console.log(this.pokemon.id);
       if (id === this.pokemon.id) {
         this.showPokemon = true;
         this.showAnswer = true;
