@@ -97,3 +97,6 @@ Para navegar entre páginas se tiene que utiliza el router link en logar de un a
 
 ## Lifecycle Hooks - Ciclo de vida de un componente
 
+No son mas  que un método (o función) que se ejecuta en cierto momento del tiempo, en este caso son los métodos que se van a dispara en cierto momento del ciclo de vida del componente
+
+![img](./z-material-cap/lifecycle.svg)
