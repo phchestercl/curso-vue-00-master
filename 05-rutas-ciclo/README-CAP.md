@@ -100,3 +100,84 @@ Para navegar entre páginas se tiene que utiliza el router link en logar de un a
 No son mas  que un método (o función) que se ejecuta en cierto momento del tiempo, en este caso son los métodos que se van a dispara en cierto momento del ciclo de vida del componente
 
 ![img](./z-material-cap/lifecycle.svg)
+
+1. beforeCreate: nos sirve para realizar funciones antes de que sea creado
+2. Created: una vez creado
+3. beforeMount : antes de montarse
+4. mounted: el componente ya esta montado
+5. beforeUpdate: antes de que se aplique un cambio
+6. updated: una vez que esté actualizado
+7. beforeUnmount: es un buen punto para hacer limpieza
+8. unmounted
+   
+## Disparar métodos del ciclo de vida
+Revisar **/src/modules/pokemon/AboutPAge.vue**
+
+Los eventos del ciclo de vida solo se disparan cuando se afecta el dom, el virtual DOM, en particular cuando se afecta el html:
+
+- renderTriggered
+- beforeUpdate
+- updated
+  
+Cuando se tiene que disparar una petición HTTP
+Nunca en el beforeCreate ya que puede ser sobreescrito al momento de que se carge la data
+
+En el created es un buen lugar
+
+## Segmentos del URL y QueryParameters
+
+www.aglo.com/productos/**param**
+
+www.aglo.com/productos/?**queryParams**
+
+En las rutas, poniendo la propiedad como variable con la forma **/.id** se estable el nombre de la variable, adicionalmente en el objeto de ponen las props y en ella una funcion que nos permitirá acceder al objeto route, desde dónde podremos extraer el parametro **/:id** previamnete definido junto con los queryParamas.
+Esto lo podemos obersvar en el archivo **/src/router/router.js** que nos lleva al componente PokemonPage. Cómo podemos observar en el siguinte extracto:
+~~~
+{ 
+    path: '/:id', // el id pasa como parámetro
+    name:'pokemon-id',
+    component:  ()=>import(/* webpackChunkName: "PokemonPage" */'../modules/pokemon/pages/PokemonPage'),
+    props:( route )=>{ 
+        const id=Number(route.params.id)
+        return isNaN(id)?{id:1}:{id}
+        }
+    },
+~~~
+Note que antes de enviar las propos, se hace una validación de que el parámetro corresoinde a un número
+
+Adicionalmente, el id lo definimos como una propiedad **obligatoria** del componente
+~~~
+props:{
+    id:{
+      type:Number,
+      required:true
+    }
+  },
+~~~
+
+## Peticion HTTP y redirecciones
+
+En el router.link de Navbar.vue
+~~~
+<router-link :to="{ name: 'pokemon-id', params: { id: 85 }}">Pokemon Por ID</router-link>
+~~~
+o en el método getPokemon de PokemonPage.vue
+~~~
+this.$router.push('/')
+~~~
+
+## Redirección desde el router
+
+Existen motivos por que se va a necesitar redireccionar desde el mismo router
+~~~
+redirect:'/home' 
+~~~
+En el registro de cada una de las rutas
+[Documentación](https://next.router.vuejs.org/api/#routerecordraw)
+
+Adicionalmente, es recomendable nombrar todas las rutas para establecerlas en los distintos enlaces, de esta manera, si se produce un redireccionamiento no se veran afectadas.
+
+[Ver Tambien](https://next.router.vuejs.org/api/#to)
+
+## RouterLink Personalizado
+
