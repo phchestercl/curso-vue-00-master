@@ -88,3 +88,12 @@ component: ()=>import(/* webpackChunkName: "ListPage" */'../modules/pokemon/page
 La seccion comentada es para que webpack ponga el nombre del "mudulo" a cargar para poder analizarlo en las devtools de chrome
 
 ## Navegar entre páginas RouterLink
+Para navegar entre páginas se tiene que utiliza el router link en logar de un anchor.
+~~~
+<router-link to="/">Pokemon List</router-link>
+<router-link to="/id">Pokemon Por ID</router-link>
+<router-link to="/about">About</router-link>
+~~~
+
+## Lifecycle Hooks - Ciclo de vida de un componente
+
