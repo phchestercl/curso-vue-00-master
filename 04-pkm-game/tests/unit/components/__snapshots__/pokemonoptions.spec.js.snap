@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonOptions Component Snapshot 1`] = `
+<div class="optiones-container">
+  <ul>
+    <li>tentacruel</li>
+    <li>magnezone</li>
+    <li>lickilicky</li>
+    <li>drapion</li>
+  </ul>
+</div>
+`;

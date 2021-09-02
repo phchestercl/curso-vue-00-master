@@ -72,3 +72,8 @@ revisar archivo **getpokemonoptions.spec.js**
 
 ## Pruebas de Pokemon Picture
 
+## Pruebas en Pokemon Options
+
+## Pruebas con emisiones
+
+## pruebas de PokePage
