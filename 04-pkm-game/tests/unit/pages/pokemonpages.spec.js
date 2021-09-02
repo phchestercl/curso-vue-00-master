@@ -95,7 +95,7 @@ describe('PokemonPage Component',()=>{
                   };
             }
         })
-        console.log(wrapper.vm)
+        //console.log(wrapper.vm)
         await wrapper.vm.checkAnswer(452)
         expect(wrapper.vm.showAnswer).toBeTruthy()
         expect(wrapper.find('h2').text()).toBe(`Correcto es ${pokemonMock[3].name}`)
