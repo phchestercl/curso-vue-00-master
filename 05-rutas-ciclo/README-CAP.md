@@ -181,3 +181,19 @@ Adicionalmente, es recomendable nombrar todas las rutas para establecerlas en lo
 
 ## RouterLink Personalizado
 
+## Multiples router view
+
+Crearemos layouts, que es un comonente que tiene otro router
+el router-link es el router llink principal.
+Pero puede ser que sea necesario tener un sistema de rutas especificos para cada modulo de nuestra aplicacion. Asi por ejemplo tendremos un login, una pantalla de administración y layouts especificos para cada uno de los modulos.
+
+En nuestro ejemplo comenzaremos con comentar el router y crearemos una carpeta layouts dentro del modulo de pokemon y dentro de ella crearemos un nuevo compenete llamado **PokemonLayout.vue**
+
+La unica diferencia cdel componente respecto de las otras pàginas es que posee el router-view
+~~~
+<router-view></router-view>
+~~~
+Este elemento, permitira que el pokemonlayout, puede tener rutas hijas, y esas rutas hijas se deben renderizar dentro de estes elemento, es decir, se renderizaran dentro del **PokemonLayout.vue**.
+
+
+
