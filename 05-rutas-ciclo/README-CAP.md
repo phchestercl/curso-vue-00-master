@@ -195,5 +195,7 @@ La unica diferencia cdel componente respecto de las otras pàginas es que posee 
 ~~~
 Este elemento, permitira que el pokemonlayout, puede tener rutas hijas, y esas rutas hijas se deben renderizar dentro de estes elemento, es decir, se renderizaran dentro del **PokemonLayout.vue**.
 
+## Guards Protección de rutas
+
 
 

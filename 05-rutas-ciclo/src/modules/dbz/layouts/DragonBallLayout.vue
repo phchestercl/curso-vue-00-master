@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .dbz-layout{
-    background-color: rgba(112, 84, 133,0.5);
+    background-color: rgba(31, 18, 88, 0.288);
 }
 
 </style>

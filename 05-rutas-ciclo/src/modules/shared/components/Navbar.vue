@@ -18,9 +18,11 @@ export default {
     data(){
         return {
             links:[
-                { to:'/home',               name:'Pokemons'},
-                { to:'/pokemonid/50',       name:'Pokemon por ID'},
-                { to:'/about',              name:'About'},
+                { to:'pokemon-home',        name:'Pokemons'},
+                { to:'pokemon-id',          name:'Pokemon por ID', id:15},
+                { to:'pokemon-about',       name:'About'},
+                { to:'dbz-characters',       name:'Personajes DBZ'},
+                { to:'dbz-about',           name:'DBZ About'},
                 { to:'https://google.com',  name:'Google'},
 
             ]
@@ -34,12 +36,14 @@ export default {
 
 <style scoped>
 div{
-    padding: 0 10%;
+    padding: 0 30px;
 }
-div a{  padding: 0 5px;
-     text-decoration: none;
-     color: #2c3e50;
-     margin: 0 10px;
+div a{  
+    padding: 0 5px;
+    text-decoration: none;
+    color: #2c3e50;
+    margin: 0 10px;
+    font-size: 14px;
  }
 /* div .router-link-exact-active{
     color:#42b983
