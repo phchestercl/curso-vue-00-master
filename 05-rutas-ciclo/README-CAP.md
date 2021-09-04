@@ -195,7 +195,63 @@ La unica diferencia cdel componente respecto de las otras pàginas es que posee 
 ~~~
 Este elemento, permitira que el pokemonlayout, puede tener rutas hijas, y esas rutas hijas se deben renderizar dentro de estes elemento, es decir, se renderizaran dentro del **PokemonLayout.vue**.
 
-## Guards Protección de rutas
+## Guards Protección de rutas (Global)
+
+Los guards son básicamente utilizados para la proteccion de busquedas
+Lo mas comun es la protección de la rutas por medio de la autenticación.
+
+En esta sección haremos un guard que dejará entrar a una ruta en forma aleatoria
+la documentación ofical se se puede revisar [aquí](https://router.vuejs.org/guide/advanced/navigation-guards.html)
 
 
+Un gaurd Global se ejecuta sobre todas las rutas (también existen guards especificos a rutas y componentes).
+
+~~~
+router.beforeEach((to, from ,next)=>{
+    //console.log({to, from, next })
+    const num = Math.random()*100
+    console.log(num)
+    if (to.name!=='pokemon-home'){
+        if (num>50){
+            console.log('Autorizado')
+            next()
+        } else {
+            console.log('Usuario Bloqueado por el beforeEach Guard')
+            next({name:'pokemon-home'})
+        }
+    } else {
+        next()
+    }
+     // es necesario para continuar
+})
+~~~
+
+## Guard Global Asincrono
+
+~~~
+const canAccess = () => {
+    return new Promise((resolve, reject) => {
+        const num = Math.random() * 100
+        if (num > 50) {
+            console.log('Autorizado - can Access')
+            resolve(true)
+        } else {
+            console.log('Usuario Bloqueado Can Access')
+            resolve(false)
+        }
+    })
+}
+router.beforeEach(async (to,from,next)=>{
+    const autorizado = await canAccess()
+    autorizado?next():next({name:'pokemon-home'})
+})
+~~~
+
+## Guard especifico para rutas
+
+Los Guards globales son raros en produción, lo mas comun es utilizar guard especificos para rutas, puede ser a un ruta padre, que se va a aplicar a todas sus rutas hijos. Tambien pueden utilizarse para rutas especificas.
+
+El archivo de router no lo debemos sobre cargar con código en él, en el solo debisemos tener las definciones de las rutas.
+
+Dentro de la carpeta router, crearemos un nuevo archivo, en nuestro caso **auth-guard.-js**
 
