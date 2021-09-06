@@ -117,3 +117,4 @@ Adicionalmente ponemos el store en el punto mas alto de la aplicacion en el arch
 
 ## Entradas ficticias y punto de restauración
   
+  
