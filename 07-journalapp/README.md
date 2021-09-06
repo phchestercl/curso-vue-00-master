@@ -100,5 +100,20 @@ con los siguientes archivos:
 
 Recordemos que este module-template es un cascarón que nos permitira crear el store
 
+## Journal Vuex Model
+compiamos el module-template en store de daybook
+y configuarmos en index en el store principal
+~~~
+import journal from '../modules/daybook/store/journal'
+const store = createStore({
+    modules:{
+        journal
+    }
+})
+~~~
 
+Adicionalmente ponemos el store en el punto mas alto de la aplicacion en el archivo main
+
+
+## Entradas ficticias y punto de restauración
   
