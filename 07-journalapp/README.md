@@ -75,3 +75,30 @@ y lo pondremos en el index.html
 ~~~
 
 ## Compoenentes Entry List y Entry
+
+## instalar Vuex y crear un modulo reutilizable
+
+Instalaremos vuex y lo utilizaremos en form modularizada
+
+Instalamos vuex en nuestro entorno
+
+~~~
+npm install vuex@next --save
+~~~
+
+Crearemos las carpetas store, uno en el src y otro en el modulo daybook
+el store del src es el store global
+en tanto que el store dentro de la carpeta daybook es el store para el módulo daybook
+
+Lo primero que crearemos un un template de la implementacion de vuex dentro de una carpeta llamada module-template
+con los siguientes archivos:
+- actions.js que tiene las acciones que luego llamaran un commit de una mutación (pueden ser asincronas)
+- getters.js donde tendremos los getters que nos permitirna obtener la información del state
+- mutations.js donde tendremos las mutaciones que nos permitirna hacer las modificaciones del state
+- state.js el state es reactivo y cuando se cambie el state le va a notificar a todos los componentes o lugares dónde se esten esuchando los cambios de nuestro estate
+- index.js dònde pondremos todo junto para que funcione, es lo que nosotros vamos a terminar importando en el store que vamos a definir
+
+Recordemos que este module-template es un cascarón que nos permitira crear el store
+
+
+  
