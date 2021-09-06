@@ -6,7 +6,12 @@ export default {
         {
             path:'',
             name:'no-entry',
-            component:()=>import(/* webpackChunkName: "noEntry" */'../../../modules/daybook/views/NoEntrySelected.vue')
+            component:()=>import(/* webpackChunkName: "Day book No Entry" */'../../../modules/daybook/views/NoEntrySelected.vue')
+        },
+        {
+            path:':id',
+            name:'entry',
+            component:()=>import(/* webpackChunkName: "Daybook Entry" */'../../../modules/daybook/views/EntryView.vue')
         }
     ]
 }
